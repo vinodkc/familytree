@@ -41,39 +41,40 @@ public class FamilyTreeTest {
 	@After
 	public void tearDown() {
 	}
-	
-	/***************************** Start Find member  Test *********************************************/
+
+	/***************************** Start Find member Test *********************************************/
 
 	@Test
 	public void findIsh() {
 		FamilyMember actual = familyTree.findFamilyMember("Ish");
 		assertEquals("Ish exists but not found", "Ish", actual.getName());
 	}
+
 	@Test
 	public void findMnu() {
 		FamilyMember actual = familyTree.findFamilyMember("Mnu");
 		assertEquals("Mnu exists but not found", "Mnu", actual.getName());
 	}
-	
+
 	@Test
 	public void findNonExistentMember() {
 		FamilyMember actual = familyTree.findFamilyMember("X");
-		assertTrue("X doesnot exis ", actual== null);
+		assertTrue("X doesnot exis ", actual == null);
 	}
-	
+
 	@Test
 	public void findKingShan() {
 		FamilyMember actual = familyTree.findFamilyMember("KingShan");
 		assertEquals("kingShan could not find ", "KingShan", actual.getName());
 	}
-	
+
 	@Test
 	public void findQueenAnga() {
 		FamilyMember actual = familyTree.findFamilyMember("QueenAnga");
 		assertEquals("QueenAnga could not find ", "QueenAnga", actual.getName());
 	}
-	
-	/***************************** End Find member  Test *********************************************/
+
+	/***************************** End Find member Test *********************************************/
 	/***************************** Start Brother Test *********************************************/
 	@Test
 	public void testIshBrother() {
@@ -81,7 +82,7 @@ public class FamilyTreeTest {
 		List<String> expected = Arrays.asList("Chit", "Vich");
 		assertEquals("Brothers of ish are incorrect", expected, actual);
 	}
-	
+
 	@Test
 	public void testAmbiBrother() {
 		List<String> actual = familyTree.findRelation("Ambi", "Brothers");
@@ -94,11 +95,12 @@ public class FamilyTreeTest {
 		List<String> expected = Arrays.asList("Ish", "Vich");
 		assertEquals("Brothers of Chit are incorrect", expected, actual);
 	}
-	
+
 	@Test
 	public void testXBrother() {
 		List<String> actual = familyTree.findRelation("X", "Brothers");
-		assertTrue("X does not exist in Family, so should not have brothers",  actual.size() == 0);
+		assertTrue("X does not exist in Family, so should not have brothers",
+				actual.size() == 0);
 	}
 
 	@Test
@@ -157,7 +159,7 @@ public class FamilyTreeTest {
 	}
 
 	/***************************** End Brother test *********************************************/
-	
+
 	/***************************** Start Sister test *********************************************/
 	@Test
 	public void testIshSister() {
@@ -171,23 +173,20 @@ public class FamilyTreeTest {
 		List<String> actual = familyTree.findRelation("Satya", "Sisters");
 		assertTrue("Satya doesnot have sisters", actual.size() == 0);
 	}
-	
+
 	@Test
 	public void testJataSister() {
 		List<String> actual = familyTree.findRelation("Jata", "Sisters");
 		List<String> expected = Arrays.asList("Driya");
 		assertEquals("Sisters of Jata are incorrect", expected, actual);
 	}
-	
-	/*@Test
+
+	@Test
 	public void testKpilaSister() {
 		List<String> actual = familyTree.findRelation("Kpila", "Sisters");
-		List<String> expected = Arrays.asList("Driya");
-		assertEquals("Sisters of Ish are incorrect", expected, actual);
+		assertTrue("Kpila does not have sisters", actual.size() == 0);
 	}
-*/
-	
-	
+
 	/***************************** End Sister test *********************************************/
 
 	private static void fillFamily(FamilyTree familyTree) {
