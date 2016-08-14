@@ -141,11 +141,12 @@ public class Family implements FamilyNode {
 			if (familyNode instanceof Family) {
 				FamilyMember male = ((Family) familyNode).getHusband();
 
-				fillMyChild(childrenNames, male,familyMember);
+				fillMyChild(childrenNames, male, familyMember);
 
 			} else {
-				if (((FamilyMember)familyNode).getGender() == GENDER.MALE) {
-					addFamilyMemberToList(childrenNames, familyNode,familyMember);
+				if (((FamilyMember) familyNode).getGender() == GENDER.MALE) {
+					addFamilyMemberToList(childrenNames, familyNode,
+							familyMember);
 				}
 			}
 		}
@@ -155,15 +156,35 @@ public class Family implements FamilyNode {
 
 	private void addFamilyMemberToList(List<String> childrenNames,
 			FamilyNode familyNode, FamilyNode excludefamilyMember) {
-		if(familyNode !=excludefamilyMember) {
-		childrenNames.add(familyNode.getName());
+		if (familyNode != excludefamilyMember) {
+			childrenNames.add(familyNode.getName());
 		}
 	}
 
-	private void fillMyChild(List<String> childrenNames, FamilyMember member, FamilyNode excludefamilyMember) {
+	private void fillMyChild(List<String> childrenNames, FamilyMember member,
+			FamilyNode excludefamilyMember) {
 		if ((member.getFather() == husband) && (member.getMother() == wife)) {
-			addFamilyMemberToList(childrenNames, member,excludefamilyMember);
+			addFamilyMemberToList(childrenNames, member, excludefamilyMember);
 		}
+	}
+
+	public List<String> getSisterNames(FamilyMember familyMember) {
+		List<String> childrenNames = new ArrayList<String>();
+		for (FamilyNode familyNode : subFamily) {
+
+			if (familyNode instanceof Family) {
+				FamilyMember female = ((Family) familyNode).getWife();
+
+				fillMyChild(childrenNames, female, familyMember);
+
+			} else {
+				if (((FamilyMember) familyNode).getGender() == GENDER.FEMALE) {
+					addFamilyMemberToList(childrenNames, familyNode,
+							familyMember);
+				}
+			}
+		}
+		return childrenNames;
 	}
 
 }

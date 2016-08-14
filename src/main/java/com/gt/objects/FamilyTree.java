@@ -9,6 +9,8 @@ import com.gt.objects.traverse.RelationFinder;
 import com.gt.objects.traverse.Visitor;
 
 public class FamilyTree {
+	private static final String BROTHERS = "BROTHERS";
+	private static final String SISTERS = "SISTERS";
 	private Family root;
 
 	public FamilyTree(Family family) {
@@ -51,13 +53,25 @@ public class FamilyTree {
 				releationName);
 		if (root.accept(relVisitor)) {
 			switch (releationName.toUpperCase()) {
-			case "BROTHERS": {
+			case BROTHERS: {
 				return relVisitor.getBrothers();
+			}
+			case SISTERS: {
+				return relVisitor.getSisters();
 			}
 			}
 
-		} 
+		}
 		return new ArrayList<String>();
+	}
+
+	public FamilyMember findFamilyMember(String name) {
+		MemberFetcherVisitor visitor = new MemberFetcherVisitor(name);
+		if (root.accept(visitor)) {
+			return  visitor.getFamilyMember();
+		} else {
+			return null;
+		}
 	}
 
 }
