@@ -1,13 +1,13 @@
 package com.gt.objects.traverse;
 
 import com.gt.objects.Family;
-import com.gt.objects.FamilyNode;
+import com.gt.objects.FamilyMember;
 
 public class PrintVisitor implements Visitor {
 
 	@Override
-	public boolean visit(FamilyNode familyNode) {
-		System.out.println(familyNode);
+	public boolean visit(FamilyMember familyMember) {
+		System.out.println(familyMember);
 		return false;
 	}
 
