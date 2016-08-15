@@ -11,6 +11,9 @@ import com.gt.objects.traverse.Visitor;
 public class FamilyTree {
 	private static final String BROTHERS = "BROTHERS";
 	private static final String SISTERS = "SISTERS";
+	private static final String SONS = "SONS";
+	private static final String DAUGHTERS = "DAUGHTERS";
+	
 	private Family root;
 
 	public FamilyTree(Family family) {
@@ -54,10 +57,16 @@ public class FamilyTree {
 		if (root.accept(relVisitor)) {
 			switch (releationName.toUpperCase()) {
 			case BROTHERS: {
-				return relVisitor.getBrothers();
+				return relVisitor.getBrotherNames();
 			}
 			case SISTERS: {
-				return relVisitor.getSisters();
+				return relVisitor.getSisterNames();
+			}
+			case SONS: {
+				return relVisitor.getSonsNames();
+			}
+			case DAUGHTERS: {
+				return relVisitor.getDaughterNames();
 			}
 			}
 

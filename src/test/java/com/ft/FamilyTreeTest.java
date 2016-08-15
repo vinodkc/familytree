@@ -12,9 +12,8 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-import com.gt.objects.Family;
+import com.gt.misc.Utils;
 import com.gt.objects.FamilyMember;
-import com.gt.objects.FamilyNode.GENDER;
 import com.gt.objects.FamilyTree;
 
 public class FamilyTreeTest {
@@ -23,12 +22,10 @@ public class FamilyTreeTest {
 
 	@BeforeClass
 	public static void classSetup() {
-		Family family = new Family(new FamilyMember("KingShan", GENDER.MALE),
-				new FamilyMember("QueenAnga", GENDER.FEMALE));
-		familyTree = new FamilyTree(family);
-
-		fillFamily(familyTree);
+		familyTree = Utils.createFamilyTree();
 	}
+
+	
 
 	@AfterClass
 	public static void classTearDown() {
@@ -189,76 +186,141 @@ public class FamilyTreeTest {
 
 	/***************************** End Sister test *********************************************/
 
-	private static void fillFamily(FamilyTree familyTree) {
-		FamilyMember ish = new FamilyMember("Ish", GENDER.MALE);
-		familyTree.addFamilyMember(ish, "queenAnga");
-
-		FamilyMember chit = new FamilyMember("Chit", GENDER.MALE);
-		familyTree.addFamilyMember(chit, "kingShan");
-		FamilyMember ambi = new FamilyMember("Ambi", GENDER.FEMALE);
-		familyTree.addSpouse(ambi, "Chit");
-
-		FamilyMember vich = new FamilyMember("Vich", GENDER.MALE);
-		familyTree.addFamilyMember(vich, "kingShan");
-		FamilyMember lika = new FamilyMember("Lika", GENDER.FEMALE);
-		familyTree.addSpouse(lika, "Vich");
-
-		FamilyMember chika = new FamilyMember("Chika", GENDER.FEMALE);
-		familyTree.addFamilyMember(chika, "Lika");
-		FamilyMember kpila = new FamilyMember("Kpila", GENDER.MALE);
-		familyTree.addSpouse(kpila, "chika");
-
-		FamilyMember satya = new FamilyMember("Satya", GENDER.FEMALE);
-		familyTree.addFamilyMember(satya, "kingShan");
-		FamilyMember vyan = new FamilyMember("Vyan", GENDER.MALE);
-		familyTree.addSpouse(vyan, "Satya");
-
-		FamilyMember drita = new FamilyMember("Drita", GENDER.MALE);
-		familyTree.addFamilyMember(drita, "Chit");
-		FamilyMember jaya = new FamilyMember("Jaya", GENDER.FEMALE);
-		familyTree.addSpouse(jaya, "Drita");
-
-		FamilyMember vrita = new FamilyMember("Vrita", GENDER.MALE);
-		familyTree.addFamilyMember(vrita, "Chit");
-
-		FamilyMember jata = new FamilyMember("Jata", GENDER.MALE);
-		familyTree.addFamilyMember(jata, "Jaya");
-
-		FamilyMember driya = new FamilyMember("Driya", GENDER.FEMALE);
-		familyTree.addFamilyMember(driya, "Drita");
-
-		FamilyMember mnu = new FamilyMember("Mnu", GENDER.MALE);
-		familyTree.addSpouse(mnu, "Driya");
-
-		FamilyMember vila = new FamilyMember("Vila", GENDER.MALE);
-		familyTree.addFamilyMember(vila, "Vich");
-		FamilyMember jnky = new FamilyMember("Jnky", GENDER.FEMALE);
-		familyTree.addSpouse(jnky, "Vila");
-
-		FamilyMember lavnya = new FamilyMember("Lavnya", GENDER.FEMALE);
-		familyTree.addFamilyMember(lavnya, "vila");
-		FamilyMember gru = new FamilyMember("Gru", GENDER.MALE);
-		familyTree.addSpouse(gru, "Lavnya");
-
-		FamilyMember satvy = new FamilyMember("Satvy", GENDER.FEMALE);
-		familyTree.addFamilyMember(satvy, "Vyan");
-		FamilyMember asva = new FamilyMember("Asva", GENDER.MALE);
-		familyTree.addSpouse(asva, "Satvy");
-
-		FamilyMember savya = new FamilyMember("Savya", GENDER.MALE);
-		familyTree.addFamilyMember(savya, "Satya");
-		FamilyMember krpi = new FamilyMember("Krpi", GENDER.FEMALE);
-		familyTree.addSpouse(krpi, "Savya");
-
-		FamilyMember kriya = new FamilyMember("Kriya", GENDER.MALE);
-		familyTree.addFamilyMember(kriya, "Savya");
-
-		FamilyMember saayan = new FamilyMember("Saayan", GENDER.MALE);
-		familyTree.addFamilyMember(saayan, "Vyan");
-		FamilyMember mina = new FamilyMember("Mina", GENDER.FEMALE);
-		familyTree.addSpouse(mina, "Saayan");
-
-		FamilyMember misa = new FamilyMember("Misa", GENDER.FEMALE);
-		familyTree.addFamilyMember(misa, "Mina");
+	/***************************** Start Son test *********************************************/
+	@Test
+	public void testChitSon() {
+		List<String> actual = familyTree.findRelation("Chit", "Sons");
+		List<String> expected = Arrays.asList("Drita", "Vrita");
+		assertEquals("Sons of Chit are incorrect", expected, actual);
 	}
+	
+	@Test
+	public void testKingShanSon() {
+		List<String> actual = familyTree.findRelation("KingShan", "Sons");
+		List<String> expected = Arrays.asList("Ish", "Chit", "Vich");
+		assertEquals("Sons of Chit are incorrect", expected, actual);
+	}
+	
+	@Test
+	public void testQueenAngaSon() {
+		List<String> actual = familyTree.findRelation("QueenAnga", "Sons");
+		List<String> expected = Arrays.asList("Ish", "Chit", "Vich");
+		assertEquals("Sons of Chit are incorrect", expected, actual);
+	}
+	
+	@Test
+	public void testIshSon() {
+		List<String> actual = familyTree.findRelation("Ish", "Sons");
+		assertTrue("Ish is not married, no sons", actual.size() == 0);
+	}
+	
+	@Test
+	public void testAmbiSon() {
+		List<String> actual = familyTree.findRelation("Ambi", "Sons");
+		List<String> expected = Arrays.asList("Drita", "Vrita");
+		assertEquals("Sons of Ambi are incorrect", expected, actual);
+	}
+	@Test
+	public void testJayaSon() {
+		List<String> actual = familyTree.findRelation("Jaya", "Sons");
+		List<String> expected = Arrays.asList("Jata");
+		assertEquals("Sons of Jaya are incorrect", expected, actual);
+	}
+	
+	@Test
+	public void testJataSon() {
+		List<String> actual = familyTree.findRelation("Jata", "Sons");
+		assertTrue("Jata is not married, no sons", actual.size() == 0);
+	}
+
+	@Test
+	public void testDritaSon() {
+		List<String> actual = familyTree.findRelation("Drita", "Sons");
+		List<String> expected = Arrays.asList("Jata");
+		assertEquals("Sons of Drita are incorrect", expected, actual);
+	}
+	
+	@Test
+	public void testMnuSon() {
+		List<String> actual = familyTree.findRelation("Mnu", "Sons");
+		assertTrue("Mnu is not married, no sons", actual.size() == 0);
+	}
+	
+	@Test
+	public void testLikaSon() {
+		List<String> actual = familyTree.findRelation("Lika", "Sons");
+		List<String> expected = Arrays.asList("Vila");
+		assertEquals("Sons of Lika are incorrect", expected, actual);
+	}
+	
+	@Test
+	public void testVichSon() {
+		List<String> actual = familyTree.findRelation("Vich", "Sons");
+		List<String> expected = Arrays.asList("Vila");
+		assertEquals("Sons of Vich are incorrect", expected, actual);
+	}
+	
+	@Test
+	public void testVilaSon() {
+		List<String> actual = familyTree.findRelation("Vila", "Sons");
+		assertTrue("Vila does not have sons", actual.size() == 0);
+	}
+	
+	@Test
+	public void testJnkiSon() {
+		List<String> actual = familyTree.findRelation("Jnki", "Sons");
+		assertTrue("Jnki does not have sons", actual.size() == 0);
+	}
+	
+	@Test
+	public void testSatyaSon() {
+		List<String> actual = familyTree.findRelation("Satya", "Sons");
+		List<String> expected = Arrays.asList("Savya", "Saayan");
+		assertEquals("Sons of Satya are incorrect", expected, actual);
+	}
+	
+	@Test
+	public void testVyanSon() {
+		List<String> actual = familyTree.findRelation("Vyan", "Sons");
+		List<String> expected = Arrays.asList("Savya", "Saayan");
+		assertEquals("Sons of Vyan are incorrect", expected, actual);
+	}
+	@Test
+	public void testKpilaSon() {
+		List<String> actual = familyTree.findRelation("Kpila", "Sons");
+		assertTrue("Kpila is not married, no sons", actual.size() == 0);
+	}
+	
+	@Test
+	public void testSavyaSon() {
+		List<String> actual = familyTree.findRelation("Savya", "Sons");
+		List<String> expected = Arrays.asList("Kriya");
+		assertEquals("Sons of Savya are incorrect", expected, actual);
+	}
+	
+	@Test
+	public void testSaayanSon() {
+		List<String> actual = familyTree.findRelation("Saayan", "Sons");
+		List<String> expected = Arrays.asList("Misa");
+		assertEquals("Sons of Saayan are incorrect", expected, actual);
+	}
+	
+	@Test
+	public void testMinaSon() {
+		List<String> actual = familyTree.findRelation("Mina", "Sons");
+		List<String> expected = Arrays.asList("Misa");
+		assertEquals("Sons of Mina are incorrect", expected, actual);
+	}
+
+	/***************************** End Son test *********************************************/
+	
+	/***************************** Start  Daughter test *********************************************/
+	@Test
+	public void testSatyaDaughter() {
+		List<String> actual = familyTree.findRelation("Satya", "Daughters");
+		List<String> expected = Arrays.asList("Satvy");
+		assertEquals("Daughters of Satya are incorrect", expected, actual);
+	}
+
+	/***************************** End Daughter test *********************************************/
 }

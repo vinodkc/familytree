@@ -63,7 +63,7 @@ public class Family implements FamilyNode {
 				|| wife.getName().equals(parentName)) {
 			familyMember.setFather(husband);
 			familyMember.setMother(wife);
-			familyMember.setFamily(this);
+			//familyMember.setFamily(this);
 			subFamily.add(familyMember);
 		}
 
@@ -72,7 +72,7 @@ public class Family implements FamilyNode {
 	public void addFamilyMember(FamilyMember familyMember) {
 		familyMember.setFather(husband);
 		familyMember.setMother(wife);
-		familyMember.setFamily(this);
+		//familyMember.setFamily(this);
 		subFamily.add(familyMember);
 
 	}
@@ -181,6 +181,43 @@ public class Family implements FamilyNode {
 				if (((FamilyMember) familyNode).getGender() == GENDER.FEMALE) {
 					addFamilyMemberToList(childrenNames, familyNode,
 							familyMember);
+				}
+			}
+		}
+		return childrenNames;
+	}
+
+	public List<String> getSonsNames() {
+		List<String> childrenNames = new ArrayList<String>();
+		for (FamilyNode familyNode : subFamily) {
+
+			if (familyNode instanceof Family) {
+				FamilyMember male = ((Family) familyNode).getHusband();
+				fillMyChild(childrenNames, male, null);
+
+			} else {
+				if (((FamilyMember) familyNode).getGender() == GENDER.MALE) {
+					addFamilyMemberToList(childrenNames, familyNode,
+							null);
+				}
+			}
+		}
+		return childrenNames;
+
+	}
+
+	public List<String> getDaughtersNames() {
+		List<String> childrenNames = new ArrayList<String>();
+		for (FamilyNode familyNode : subFamily) {
+
+			if (familyNode instanceof Family) {
+				FamilyMember female = ((Family) familyNode).getWife();
+				fillMyChild(childrenNames, female, null);
+
+			} else {
+				if (((FamilyMember) familyNode).getGender() == GENDER.FEMALE) {
+					addFamilyMemberToList(childrenNames, familyNode,
+							null);
 				}
 			}
 		}
