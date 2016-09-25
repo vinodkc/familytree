@@ -58,8 +58,8 @@ public class Utils {
 
 		FamilyMember vila = new FamilyMember("Vila", GENDER.MALE);
 		familyTree.addFamilyMember(vila, "Vich");
-		FamilyMember jnky = new FamilyMember("Jnky", GENDER.FEMALE);
-		familyTree.addSpouse(jnky, "Vila");
+		FamilyMember jnki = new FamilyMember("Jnki", GENDER.FEMALE);
+		familyTree.addSpouse(jnki, "Vila");
 
 		FamilyMember lavnya = new FamilyMember("Lavnya", GENDER.FEMALE);
 		familyTree.addFamilyMember(lavnya, "vila");

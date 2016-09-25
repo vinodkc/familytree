@@ -322,5 +322,183 @@ public class FamilyTreeTest {
 		assertEquals("Daughters of Satya are incorrect", expected, actual);
 	}
 
-	/***************************** End Daughter test *********************************************/
+	@Test
+	public void testVyanDaughter() {
+		List<String> actual = familyTree.findRelation("Vyan", "Daughters");
+		List<String> expected = Arrays.asList("Satvy");
+		assertEquals("Daughters of Satya are incorrect", expected, actual);
+	}
+
+	@Test
+	public void testKingShanDaughter() {
+		List<String> actual = familyTree.findRelation("KingShan", "Daughters");
+		List<String> expected = Arrays.asList("Satya");
+		assertEquals("Daughters of KingShan are incorrect", expected, actual);
+	}
+
+	@Test
+	public void testQueenAngaDaughter() {
+		List<String> actual = familyTree.findRelation("QueenAnga", "Daughters");
+		List<String> expected = Arrays.asList("Satya");
+		assertEquals("Daughters of KingShan are incorrect", expected, actual);
+	}
+
+	@Test
+	public void testVichDaughter() {
+		List<String> actual = familyTree.findRelation("Vich", "Daughters");
+		List<String> expected = Arrays.asList("Chika");
+		assertEquals("Daughters of Vich are incorrect", expected, actual);
+	}
+
+	@Test
+	public void testLikaDaughter() {
+		List<String> actual = familyTree.findRelation("Lika", "Daughters");
+		List<String> expected = Arrays.asList("Chika");
+		assertEquals("Daughters of Vich are incorrect", expected, actual);
+	}
+
+	@Test
+	public void testIshDaughter() {
+		List<String> actual = familyTree.findRelation("Ish", "Daughters");
+		assertTrue("Ish  does not have daughter", actual.size() == 0);
+	}
+	@Test
+	public void testChitDaughter() {
+		List<String> actual = familyTree.findRelation("Chit", "Daughters");
+		assertTrue("Chit  does not have daughter", actual.size() == 0);
+	}
+
+	@Test
+	public void testAmbiDaughter() {
+		List<String> actual = familyTree.findRelation("Ambi", "Daughters");
+		assertTrue("Ambi  does not have daughter", actual.size() == 0);
+	}
+
+	@Test
+	public void testDritaDaughter() {
+		List<String> actual = familyTree.findRelation("Drita", "Daughters");
+		List<String> expected = Arrays.asList("Driya");
+		assertEquals("Daughters of Drita are incorrect", expected, actual);
+	}
+
+	@Test
+	public void testJayaDaughter() {
+		List<String> actual = familyTree.findRelation("Jaya", "Daughters");
+		List<String> expected = Arrays.asList("Driya");
+		assertEquals("Daughters of Jaya are incorrect", expected, actual);
+	}
+
+	@Test
+	public void testVritaDaughter() {
+		List<String> actual = familyTree.findRelation("Vrita", "Daughters");
+		assertTrue("Vrita  does not have daughter", actual.size() == 0);
+	}
+
+	@Test
+	public void testVilaDaughter() {
+		List<String> actual = familyTree.findRelation("Vila", "Daughters");
+		List<String> expected = Arrays.asList("Lavnya");
+		assertEquals("Daughters of Vila are incorrect", expected, actual);
+	}
+
+	@Test
+	public void testJnkiDaughter() {
+		List<String> actual = familyTree.findRelation("Jnki", "Daughters");
+		List<String> expected = Arrays.asList("Lavnya");
+		assertEquals("Daughters of Vila are incorrect", expected, actual);
+	}
+
+    @Test
+    public void testChikaDaughter() {
+        List<String> actual = familyTree.findRelation("Chika", "Daughters");
+        assertTrue("Chika  does not have daughter", actual.size() == 0);
+    }
+
+    @Test
+    public void testKpilaDaughter() {
+        List<String> actual = familyTree.findRelation("Kpila", "Daughters");
+        assertTrue("Kpila  does not have daughter", actual.size() == 0);
+    }
+
+    @Test
+    public void testSatvyDaughter() {
+        List<String> actual = familyTree.findRelation("Satvy", "Daughters");
+        assertTrue("Satvy  does not have daughter", actual.size() == 0);
+    }
+
+    @Test
+    public void testAsvaDaughter() {
+        List<String> actual = familyTree.findRelation("Asva", "Daughters");
+        assertTrue("Asva  does not have daughter", actual.size() == 0);
+    }
+
+    @Test
+    public void testSavyaDaughter() {
+        List<String> actual = familyTree.findRelation("Savya", "Daughters");
+        assertTrue("Savya  does not have daughter", actual.size() == 0);
+    }
+
+    @Test
+    public void testKrpiDaughter() {
+        List<String> actual = familyTree.findRelation("Krpi", "Daughters");
+        assertTrue("Krpi  does not have daughter", actual.size() == 0);
+    }
+
+    @Test
+    public void testSaayanDaughter() {
+        List<String> actual = familyTree.findRelation("Saaya", "Daughters");
+        assertTrue("Saayan  does not have daughter", actual.size() == 0);
+    }
+
+    @Test
+    public void testMinaDaughter() {
+        List<String> actual = familyTree.findRelation("Mina", "Daughters");
+        assertTrue("Mina  does not have daughter", actual.size() == 0);
+    }
+
+    @Test
+    public void testJataDaughter() {
+        List<String> actual = familyTree.findRelation("Jata", "Daughters");
+        assertTrue("Jata  does not have daughter", actual.size() == 0);
+    }
+
+    @Test
+    public void testDriyaDaughter() {
+        List<String> actual = familyTree.findRelation("Driya", "Daughters");
+        assertTrue("Driya  does not have daughter", actual.size() == 0);
+    }
+
+    @Test
+    public void testMnuDaughter() {
+        List<String> actual = familyTree.findRelation("Mnu", "Daughters");
+        assertTrue("Mnu  does not have daughter", actual.size() == 0);
+    }
+
+    @Test
+    public void testLavnyaDaughter() {
+        List<String> actual = familyTree.findRelation("Lavnya", "Daughters");
+        assertTrue("Lavnya  does not have daughter", actual.size() == 0);
+    }
+
+    @Test
+    public void testGruDaughter() {
+        List<String> actual = familyTree.findRelation("Gru", "Daughters");
+        assertTrue("Gru  does not have daughter", actual.size() == 0);
+    }
+
+
+    @Test
+    public void testKriyaDaughter() {
+        List<String> actual = familyTree.findRelation("Kriya", "Daughters");
+        assertTrue("Kriya  does not have daughter", actual.size() == 0);
+    }
+
+    @Test
+    public void testMisaDaughter() {
+        List<String> actual = familyTree.findRelation("Misa", "Daughters");
+        assertTrue("Misa  does not have daughter", actual.size() == 0);
+    }
+
+
+    /***************************** End Daughter test *********************************************/
 }
