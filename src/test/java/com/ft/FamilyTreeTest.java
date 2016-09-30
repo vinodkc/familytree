@@ -524,5 +524,57 @@ public class FamilyTreeTest {
         assertEquals("Children of Kingshan are incorrect", expected, actual);
     }
 
+    @Test
+    public void testQueenAngaChildren() {
+        List<String> actual = familyTree.findRelation("QueenAnga", "Children");
+        List<String> expected = Arrays.asList("Ish", "Chit", "Vich", "Satya");
+        assertEquals("Children of QueenAnga are incorrect", expected, actual);
+    }
+
+    @Test
+    public void testIshChildren() {
+        List<String> actual = familyTree.findRelation("Ish", "Children");
+        assertTrue("Ish  does not have Children", actual.size() == 0);
+    }
+
+    @Test
+    public void testChitChildren() {
+        List<String> actual = familyTree.findRelation("Chit", "Children");
+        List<String> expected = Arrays.asList("Drita", "Vrita");
+        assertEquals("Children of Chit are incorrect", expected, actual);
+    }
+
+    @Test
+    public void testAmbiChildren() {
+        List<String> actual = familyTree.findRelation("Ambi", "Children");
+        List<String> expected = Arrays.asList("Drita", "Vrita");
+        assertEquals("Children of Chit are incorrect", expected, actual);
+    }
+
+    @Test
+    public void testVichhildren() {
+        List<String> actual = familyTree.findRelation("Vich", "Children");
+        List<String> expected = Arrays.asList("Chika", "Vila");
+        assertEquals("Children of Vich are incorrect", expected, actual);
+    }
+    @Test
+    public void testLikaChildren() {
+        List<String> actual = familyTree.findRelation("Lika", "Children");
+        List<String> expected = Arrays.asList("Chika", "Vila");
+        assertEquals("Children of Lika are incorrect", expected, actual);
+    }
+    @Test
+    public void testSatyaChildren() {
+        List<String> actual = familyTree.findRelation("Satya", "Children");
+        List<String> expected = Arrays.asList("Satvy", "Savya", "Saayan");
+        assertEquals("Children of Satya are incorrect", expected, actual);
+    }
+    @Test
+    public void testVyanChildren() {
+        List<String> actual = familyTree.findRelation("Vyan", "Children");
+        List<String> expected = Arrays.asList("Satvy", "Savya", "Saayan");
+        assertEquals("Children of Vyan are incorrect", expected, actual);
+    }
+
     /***************************** End Children test *********************************************/
 }
