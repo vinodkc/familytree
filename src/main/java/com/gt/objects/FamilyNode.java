@@ -3,7 +3,7 @@ package com.gt.objects;
 import com.gt.objects.traverse.Visitor;
 
 public interface FamilyNode {
-	public enum GENDER {
+	enum GENDER {
 		MALE, FEMALE;
 	}
 

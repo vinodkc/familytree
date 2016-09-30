@@ -7,6 +7,7 @@ public class FamilyMember implements FamilyNode {
 	private GENDER gender;
 	private FamilyMember mother;
 	private FamilyMember father;
+	private FamilyMember spouse;
 	private Family family;
 
 	public FamilyMember getMother() {
@@ -24,8 +25,6 @@ public class FamilyMember implements FamilyNode {
 	public void setFather(FamilyMember father) {
 		this.father = father;
 	}
-
-	private FamilyMember spouse;
 
 	public FamilyMember(String name, GENDER gender) {
 		this.name = name;
